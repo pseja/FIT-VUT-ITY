@@ -1,0 +1,6 @@
+-0.25:Odkazy na referenční body sázeny 'na tvrdo' nebo nestandardním způsobem (správně: \ref)
+-0.5:nevhodně sázené poznámky pod čarou (správně: \footnote) --> 58:\footnotemark{}\footnotetext{Příliš mnoho p
+-0:vlnka byla sázena pomocí \verb|~| --> 78: znaku \texttt{\textasciitilde} (vlnka, tilda
+-0.2:mailová adresa nedělána pomocí href nebo url
+-0.1:nesprávně vysázené anglické uvozovky (správně např. ``text'')
+0.1: korekce: anglické uvozovky
