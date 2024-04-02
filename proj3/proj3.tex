@@ -52,7 +52,7 @@
         Další možností, jak vytvořit tabulku, je použít prostředí\texttt{ tabular}. Tabulky pak budou vypadat takto\footnote{Kdyby byl problem s\texttt{ cline,} zkuste se podívat třeba sem: \href{http://www.abclinuxu.cz/tex/poradna/show/325037}{http://www.abclinuxu.cz/tex/poradna/show/325037}.}:
         \bigskip
 
-        \begin{table}[ht] \label{tabulka}
+        \begin{table}[ht]
             \centering
             \catcode`\-=12 % je potřeba na \cline
             \begin{tabular}{|l|c|c|}
@@ -67,11 +67,12 @@
                 \hline
             \end{tabular}
             \caption{Tabulka kurzů k~dnešnímu dni}
+            \label{tabulka}
         \end{table}
 
         \bigskip
 
-        \begin{table}[ht] \label{tabulka2}
+        \begin{table}[ht]
             \centering
             \catcode`\-=12 % je potřeba na \cline
             \begin{tabular}{|c|c|}
@@ -124,6 +125,7 @@
                 \hline
             \end{tabular}
             \caption{Protože Kleeneho trojhodnotová logika už je \uv{zastaralá}, uvádíme si zde příklad čtyřhodnotové logiky}
+            \label{tabulka2}
         \end{table}
 
         \bigskip
@@ -166,37 +168,40 @@
 \section{Obrázky}
     Do našich článků můžeme samozřejmě vkládat obrázky. Pokud je obrázkem fotografie, můžeme klidně použít bitmapový soubor. Pokud by to ale mělo být nějaké schéma nebo něco podobného, je dobrým zvykem takovýto obrázek vytvořit vektorově.
 
-    \begin{figure}[ht] \label{etiopanek}
+    \begin{figure}[ht]
         \centering
         \scalebox{0.4}{\includegraphics{etiopan.eps}
         \reflectbox{\includegraphics{etiopan.eps}}}
         \caption{Malý Etiopánek a~jeho bratříček}
+        \label{etiopanek}
     \end{figure}
 
     \bigskip
     \newpage
 
     Rozdíl mezi vektorovým \ldots
-    \begin{figure}[ht] \label{oniisan}
+    \begin{figure}[ht]
         \centering
         \scalebox{0.4}{\includegraphics{oniisan.eps}}
         \caption{Vektorový obrázek}
+        \label{oniisan}
     \end{figure}
 
     \bigskip
 
     \noindent \ldots\,a bitmapovým obrázkem
-    \begin{figure}[ht] \label{oniisan2}
+    \begin{figure}[ht]
         \centering
         \scalebox{0.6}{\includegraphics{oniisan2.eps}}
         \caption{Bitmapový obrázek}
+        \label{oniisan2}
     \end{figure}
 
     \bigskip
 
     \noindent se projeví například při zvětšení.
 
-    Odkazy (nejen ty) na obrázky 1, 2 a~3, na tabulky 1 a 2 a~také na algoritmus~\ref{algoritmus} jsou udělány pomocí křížových odkazů. Pak je ovšem potřeba zdrojový soubor přeložit dvakrát.
+    Odkazy (nejen ty) na obrázky \ref{etiopanek}, \ref{oniisan} a~\ref{oniisan2}, na tabulky \ref{tabulka} a \ref{tabulka2} a~také na algoritmus~\ref{algoritmus} jsou udělány pomocí křížových odkazů. Pak je ovšem potřeba zdrojový soubor přeložit dvakrát.
 
     Vektorové obrázky lze vytvořit i~přímo v~{\LaTeX}u, například pomocí prostředí\texttt{ picture.}
     \newpage
