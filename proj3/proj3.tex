@@ -7,6 +7,12 @@
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[hidelinks]{hyperref}
+
+\makeatletter
+\let\@@deferred@thm@head\deferred@thm@head
+\def\deferred@thm@head#1{\@@deferred@thm@head{#1}}
+\makeatother
+
 \usepackage{multirow} % na tabulky
 \usepackage{setspace}
 \usepackage[czech, ruled, linesnumbered]{algorithm2e}
