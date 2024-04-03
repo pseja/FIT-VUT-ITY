@@ -11,7 +11,7 @@ $(PROJ).pdf: $(PROJ).tex
 	ps2pdf -sPAPERSIZE=a4 $(PROJ).ps
 
 clean:
-	rm -f $(PROJ).aux $(PROJ).dvi $(PROJ).log $(PROJ).ps $(PROJ).pdf $(PROJ).out $(PROJ).toc
+	rm -f $(PROJ).aux $(PROJ).dvi $(PROJ).log $(PROJ).ps $(PROJ).out
 
 zip:
-	zip xpsejal00.zip *.tex *.bib *.eps *.sty Makefile
+	zip xpsejal00.zip *.tex *.eps *.sty Makefile
