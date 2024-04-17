@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+
+\usepackage[left=2cm, top=3cm, text={17cm, 24cm}]{geometry}
+\usepackage{times}
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \textsc{\Huge Vysoké učení technické v~Brně}\\
+        \medskip
+        \textsc{\huge Fakulta informačních technologií}\\
+        \bigskip
+        \vspace{\stretch{0.382}}
+        {\LARGE Typografie a~publikování\,--\,4. projekt}\\
+        \medskip
+        {\Huge Bibliografické citace}
+        \vspace{\stretch{0.618}}
+    \end{center}
+    {\Large \today \hfill Lukáš Pšeja}\\\null
+\end{titlepage}
+
+\section*{Úvod}
+    Celulární automat je matematický model, který se skládá z~pravidelné mřížky buněk, které mohou nabývat konečného počtu stavů \cite{diplomka}. Každá buňka má své N-rozměrné okolí, které je definováno pravidly, podle kterých se buňka mění v~daném prostoru \cite{celularni_automaty}. 
+
+\section*{Využití celulárních automatů}
+    Celulární automaty jsou používány pro simulaci a~modelování fyzických systémů a~procesů \cite{casopis}. Používány jsou také v~nanotechnologiích a~kvantovém počítání \cite{article_automated_design}. Dále se dají využít například i~v~epidemiologii pro zkoumání nemocí. V~antropologii se využívají pro výzkum a vizualizaci vývoje civilizací. Ve fyzice zase pro simulaci nově objevených plynů nebo kapalin \cite{online_ca}, nebo v~kryptografii pro šifrování dat \cite{bakalarka}.
+
+\section*{Příklady celulárních automatů}
+    Americký matematik John von Neumann byl prvním, který vytvořil celulární automat známý jako Von Neumannův celulární automat. Tento automat měl sloužit jako průzkum samostatné replikace strojů skládajících se z~dvaceti devíti stavů \cite{analyza_a_aplikace}.
+
+    Nejznámějším celulárním automatem je takzvaná Hra života od britského matematika J. H. Conwaye. V~tomto automatu na dvourozměrném prostoru buňky nabývají dvou stavů - živá nebo mrtvá \cite{online_gol}. Hra života má tyto pravidla \cite{pravidla}:
+    \begin{enumerate}
+        \item Každá živá buňka s~méně než dvěma živými sousedy zemře.
+        \item Každá živá buňka se dvěma nebo třemi živými sousedy zůstává žít.
+        \item Každá živá buňka s~více než třemi živými sousedy zemře.
+        \item Každá mrtvá buňka s~právě třemi živými sousedy oživne.
+    \end{enumerate}
+    Celý tento automat připomíná vývoj živých organizmů \cite{article_scientific_american}.
+
+\section*{Závěr}
+    Evoluce celulárních automatů ukazuje nejen významný pokrok v~oblasti výpočetní techniky, ale také potenciál pro další inovace. V~budoucnosti můžeme očekávat, že se význam celulárních automatů ještě zvýší. Díky své schopnosti modelovat složité systémy mohou být celulární automaty klíčové pro pochopení a řešení některých z~největších výzev dneška, jako je například klimatická změna nebo globální zdravotní krize. Navíc, jak se technologie neustále vyvíjí, otevírají se nové možnosti pro využití celulárních automatů v~oblastech, které jsme si dříve ani nedokázali představit \cite{bakalarka}.
+
+\newpage
+
+\bibliographystyle{czplain}
+\renewcommand{\refname}{Literatura}
+\bibliography{literatura}
+
+\end{document}
