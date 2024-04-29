@@ -57,15 +57,17 @@
         Při implementaci uvažujeme dva způsoby
         \begin{itemize}
             \item Jednodušší způsob, kdy používáme jeden záznam navíc, který nám říká, kolik je momentálně prvků v poli
-            \item Složitější ale efektivnější způsob, kdy používáme ukazatele \emph{write} a \emph{read} na výpočet prvků v poli
+            \item Složitější ale efektivnější způsob, kdy používáme ukazatele \emph{write} a \emph{read} na výpočet prvků v poli. Aby tato metoda fungovala, musíme ale přidat jeden prvek navíc.
         \end{itemize}
-        Druhý způsob je výhodnější, protože je vhodný pro \emph{multithreading} a \emph{real-time} aplikace. Budeme implementovat UNIXovou funkci \emph{tail}
+        Druhý způsob je výhodnější, protože je vhodný pro \emph{multithreading} a \emph{real-time} aplikace.
+        
+        Jako příklad budeme implementovat UNIXovou funkci \emph{tail}.
         \begin{algorithm}[H]
-        \caption{CircularBuffer Structure}
+        \caption{CircularBuffer Struktura}
         \label{alg:circularbuffer}
         \begin{algorithmic}[1]
-            \State \textbf{Structure:} CircularBuffer
-            \State \textbf{Fields:}
+            \State \textbf{Struktura:} CircularBuffer
+            \State \textbf{Prvky:}
             \State \hspace{\algorithmicindent} $\bullet$ \textit{size} : Integer
             \State \hspace{\algorithmicindent} $\bullet$ \textit{head} : Integer
             \State \hspace{\algorithmicindent} $\bullet$ \textit{tail} : Integer
@@ -75,65 +77,91 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{Zakladní operace s cyklickým polem}
-        Kontrola prázdnosti a plnosti cyklického pole
-    \end{frame}
-
-
-
-
-    \begin{frame}
-        \frametitle{Cíle práce}
-        \begin{columns}
-            \column{0.4\textwidth}
-            \begin{itemize}
-                \item \emph{Vstup}
-                \item \emph{Výstup}
-                \item Žádoucí \emph{vlastnosti}
-                \item Využití \& aplikace
-            \end{itemize}
-
-            \column{0.6\textwidth}
-            \includegraphics[width=\textwidth]{img/template-Goal.pdf}
-        \end{columns}
+        \frametitle{Zakladní operace s cyklickým polem 1/4}
+        Kontrola prázdnosti cyklického pole
+        \begin{algorithm}[H]
+        \caption{isEmpty}
+        \label{alg:isempty}
+        \begin{algorithmic}[1]
+            \State \textbf{Funkce:} isEmpty
+            \State \textbf{Vstup:} CircularBuffer
+            \State \textbf{Výstup:} Boolean
+            \State \textbf{Pokyny:}
+            \State \hspace{\algorithmicindent} \textbf{if} head == tail \textbf{then}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} True
+            \State \hspace{\algorithmicindent} \textbf{else}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} False
+            \State \hspace{\algorithmicindent} \textbf{end if}
+        \end{algorithmic}
+        \end{algorithm}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Podstatné informace o řešení}
-        \centering\includegraphics[width=0.8\textwidth]{img/template-Schema.pdf}
-        \begin{equation}
-            \mathbf{a}_t = \sum_{i=1}^{L}\alpha_{t,i}\mathbf{f}_{t,i}^{*}
-        \end{equation}
-        kde $\alpha_{t,i}$ počítá \emph{softmax}:
-        \begin{align}
-            \alpha_{t,i} & = \frac{\exp(r_{t,i})}{\sum_{k=1}{L}\exp(r_{t,k})}
-            \\
-            r_{t,i}      & = W^a \tanh\left( W^h \mathbf{h}_{t-1} + W^f\mathbf{f}_{t,i}^{*} + b \right)
-        \end{align}
-    \end{frame}
-
-    \begin{frame}\frametitle{Podstatné informace o řešení}
-        \makebox[\linewidth]{\includegraphics[width=\paperwidth]{img/template-Screenshot.png}}
+        \frametitle{Zakladní operace s cyklickým polem 2/4}
+        Kontrola plnosti cyklického pole
+        \begin{algorithm}[H]
+        \caption{isFull}
+        \label{alg:isfull}
+        \begin{algorithmic}[1]
+            \State \textbf{Funkce:} isFull
+            \State \textbf{Vstup:} CircularBuffer
+            \State \textbf{Výstup:} Boolean
+            \State \textbf{Pokyny:}
+            \State \hspace{\algorithmicindent} \textbf{if} ((tail + 1) \% size) == head; \textbf{then}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} True
+            \State \hspace{\algorithmicindent} \textbf{else}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} False
+            \State \hspace{\algorithmicindent} \textbf{end if}
+        \end{algorithmic}
+        \end{algorithm}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Výsledky práce}
-        \begin{columns}
-            \column{0.4\textwidth}
-            \begin{itemize}
-                \item Co se \emph{podařilo}
-                \item Vytvořená datová sada: \emph{105\,k} záznamů
-                \item Úspěšnost: \emph{103\,\%}
-            \end{itemize}
+        \frametitle{Zakladní operace s cyklickým polem 3/4}
+        Vložení řádku do cyklického pole
+        \begin{itemize}
+            \item Časová složitost operace je $O(1)$
+        \end{itemize}
+        \begin{algorithm}[H]
+        \caption{cbufPut}
+        \label{alg:cbufPut}
+        \begin{algorithmic}[1]
+            \State \textbf{Funkce:} cbufPut
+            \State \textbf{Vstup:} CircularBuffer, line
+            \State \textbf{Pokyny:}
+            \State \hspace{\algorithmicindent} \textbf{if} isFull; \textbf{then}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} free(lines[head])
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} head = (head + 1) \% size
+            \State \hspace{\algorithmicindent} \textbf{else}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent}  lines[tail] = line
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent}  tail = (tail + 1) \% size
+            \State \hspace{\algorithmicindent} \textbf{end if}
+        \end{algorithmic}
+        \end{algorithm}
+    \end{frame}
 
-            \column{0.6\textwidth}
-            \centering
-            \includegraphics[width=0.8\textwidth]{img/template-ResultsTable.pdf}
-
-            \bigskip
-            \includegraphics[width=\textwidth]{img/template-ResultsPlot.pdf}
-
-        \end{columns}
+    \begin{frame}
+        \frametitle{Zakladní operace s cyklickým polem 4/4}
+        Získání řádku z cyklického pole
+        \begin{itemize}
+            \item Časová složitost operace je $O(1)$
+        \end{itemize}
+        \begin{algorithm}[H]
+        \caption{cbufGet}
+        \label{alg:cbufGet}
+        \begin{algorithmic}[1]
+            \State \textbf{Funkce:} cbufGet
+            \State \textbf{Vstup:} CircularBuffer, index
+            \State \textbf{Výstup:} Pointer to Character
+            \State \textbf{Pokyny:}
+            \State \hspace{\algorithmicindent} count = (tail - head + size) \% size
+            \State \hspace{\algorithmicindent} \textbf{if} index $<$ 0 \textbf{or} index $\geq$ count; \textbf{then}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} NULL
+            \State \hspace{\algorithmicindent} \textbf{else}
+            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} lines[(head + index) \% size]
+            \State \hspace{\algorithmicindent} \textbf{end if}
+        \end{algorithmic}
+        \end{algorithm}
     \end{frame}
 
     \begin{frame}
