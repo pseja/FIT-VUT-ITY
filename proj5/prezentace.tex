@@ -48,7 +48,11 @@
                 \item Oproti lineárnímu poli je výhodou, že se \emph{nemusí} přesouvat prvky, ale pouze posouvají ukazatele
             \end{itemize}
             \column{0.5\textwidth}
-            \includegraphics[width=\textwidth]{img/circular_buffer_empty_circle.pdf} % wikipedie - circular buffer
+            \begin{figure}[h!]
+                \includegraphics[width=\textwidth]{img/circular_buffer_empty_circle.pdf} % wikipedie - circular buffer
+                \caption{Cyklická fronta}
+                \label{fig:circular_buffer}
+            \end{figure}
         \end{columns}
     \end{frame}
 
@@ -60,19 +64,19 @@
             \item Složitější ale efektivnější způsob, kdy používáme ukazatele \emph{write} a \emph{read} na výpočet prvků v poli. Aby tato metoda fungovala, musíme ale přidat jeden prvek navíc.
         \end{itemize}
         Druhý způsob je výhodnější, protože je vhodný pro \emph{multithreading} a \emph{real-time} aplikace.
-        
+
         Jako příklad budeme implementovat UNIXovou funkci \emph{tail}.
         \begin{algorithm}[H]
-        \caption{CircularBuffer Struktura}
-        \label{alg:circularbuffer}
-        \begin{algorithmic}[1]
-            \State \textbf{Struktura:} CircularBuffer
-            \State \textbf{Prvky:}
-            \State \hspace{\algorithmicindent} $\bullet$ \textit{size} : Integer
-            \State \hspace{\algorithmicindent} $\bullet$ \textit{head} : Integer
-            \State \hspace{\algorithmicindent} $\bullet$ \textit{tail} : Integer
-            \State \hspace{\algorithmicindent} $\bullet$ \textit{lines} : Pointer to Pointer to Character
-        \end{algorithmic}
+            \caption{CircularBuffer Struktura}
+            \label{alg:circularbuffer}
+            \begin{algorithmic}[1]
+                \State \textbf{Struktura:} CircularBuffer
+                \State \textbf{Prvky:}
+                \State \hspace{\algorithmicindent} $\bullet$ \textit{size} : Integer
+                \State \hspace{\algorithmicindent} $\bullet$ \textit{head} : Integer
+                \State \hspace{\algorithmicindent} $\bullet$ \textit{tail} : Integer
+                \State \hspace{\algorithmicindent} $\bullet$ \textit{lines} : Pointer to Pointer to Character
+            \end{algorithmic}
         \end{algorithm}
     \end{frame}
 
@@ -80,19 +84,19 @@
         \frametitle{Zakladní operace s cyklickým polem 1/4}
         Kontrola prázdnosti cyklického pole
         \begin{algorithm}[H]
-        \caption{isEmpty}
-        \label{alg:isempty}
-        \begin{algorithmic}[1]
-            \State \textbf{Funkce:} isEmpty
-            \State \textbf{Vstup:} CircularBuffer
-            \State \textbf{Výstup:} Boolean
-            \State \textbf{Pokyny:}
-            \State \hspace{\algorithmicindent} \textbf{if} head == tail \textbf{then}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} True
-            \State \hspace{\algorithmicindent} \textbf{else}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} False
-            \State \hspace{\algorithmicindent} \textbf{end if}
-        \end{algorithmic}
+            \caption{isEmpty}
+            \label{alg:isempty}
+            \begin{algorithmic}[1]
+                \State \textbf{Funkce:} isEmpty
+                \State \textbf{Vstup:} CircularBuffer
+                \State \textbf{Výstup:} Boolean
+                \State \textbf{Pokyny:}
+                \State \hspace{\algorithmicindent} \textbf{if} head == tail \textbf{then}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} True
+                \State \hspace{\algorithmicindent} \textbf{else}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} False
+                \State \hspace{\algorithmicindent} \textbf{end if}
+            \end{algorithmic}
         \end{algorithm}
     \end{frame}
 
@@ -100,19 +104,19 @@
         \frametitle{Zakladní operace s cyklickým polem 2/4}
         Kontrola plnosti cyklického pole
         \begin{algorithm}[H]
-        \caption{isFull}
-        \label{alg:isfull}
-        \begin{algorithmic}[1]
-            \State \textbf{Funkce:} isFull
-            \State \textbf{Vstup:} CircularBuffer
-            \State \textbf{Výstup:} Boolean
-            \State \textbf{Pokyny:}
-            \State \hspace{\algorithmicindent} \textbf{if} ((tail + 1) \% size) == head; \textbf{then}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} True
-            \State \hspace{\algorithmicindent} \textbf{else}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} False
-            \State \hspace{\algorithmicindent} \textbf{end if}
-        \end{algorithmic}
+            \caption{isFull}
+            \label{alg:isfull}
+            \begin{algorithmic}[1]
+                \State \textbf{Funkce:} isFull
+                \State \textbf{Vstup:} CircularBuffer
+                \State \textbf{Výstup:} Boolean
+                \State \textbf{Pokyny:}
+                \State \hspace{\algorithmicindent} \textbf{if} ((tail + 1) \% size) == head; \textbf{then}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} True
+                \State \hspace{\algorithmicindent} \textbf{else}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} False
+                \State \hspace{\algorithmicindent} \textbf{end if}
+            \end{algorithmic}
         \end{algorithm}
     \end{frame}
 
@@ -123,20 +127,20 @@
             \item Časová složitost operace je $O(1)$
         \end{itemize}
         \begin{algorithm}[H]
-        \caption{cbufPut}
-        \label{alg:cbufPut}
-        \begin{algorithmic}[1]
-            \State \textbf{Funkce:} cbufPut
-            \State \textbf{Vstup:} CircularBuffer, line
-            \State \textbf{Pokyny:}
-            \State \hspace{\algorithmicindent} \textbf{if} isFull; \textbf{then}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} free(lines[head])
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} head = (head + 1) \% size
-            \State \hspace{\algorithmicindent} \textbf{else}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent}  lines[tail] = line
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent}  tail = (tail + 1) \% size
-            \State \hspace{\algorithmicindent} \textbf{end if}
-        \end{algorithmic}
+            \caption{cbufPut}
+            \label{alg:cbufPut}
+            \begin{algorithmic}[1]
+                \State \textbf{Funkce:} cbufPut
+                \State \textbf{Vstup:} CircularBuffer, line
+                \State \textbf{Pokyny:}
+                \State \hspace{\algorithmicindent} \textbf{if} isFull; \textbf{then}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} free(lines[head])
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} head = (head + 1) \% size
+                \State \hspace{\algorithmicindent} \textbf{else}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent}  lines[tail] = line
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent}  tail = (tail + 1) \% size
+                \State \hspace{\algorithmicindent} \textbf{end if}
+            \end{algorithmic}
         \end{algorithm}
     \end{frame}
 
@@ -147,35 +151,46 @@
             \item Časová složitost operace je $O(1)$
         \end{itemize}
         \begin{algorithm}[H]
-        \caption{cbufGet}
-        \label{alg:cbufGet}
-        \begin{algorithmic}[1]
-            \State \textbf{Funkce:} cbufGet
-            \State \textbf{Vstup:} CircularBuffer, index
-            \State \textbf{Výstup:} Pointer to Character
-            \State \textbf{Pokyny:}
-            \State \hspace{\algorithmicindent} count = (tail - head + size) \% size
-            \State \hspace{\algorithmicindent} \textbf{if} index $<$ 0 \textbf{or} index $\geq$ count; \textbf{then}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} NULL
-            \State \hspace{\algorithmicindent} \textbf{else}
-            \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} lines[(head + index) \% size]
-            \State \hspace{\algorithmicindent} \textbf{end if}
-        \end{algorithmic}
+            \caption{cbufGet}
+            \label{alg:cbufGet}
+            \begin{algorithmic}[1]
+                \State \textbf{Funkce:} cbufGet
+                \State \textbf{Vstup:} CircularBuffer, index
+                \State \textbf{Výstup:} Pointer to Character
+                \State \textbf{Pokyny:}
+                \State \hspace{\algorithmicindent} count = (tail - head + size) \% size
+                \State \hspace{\algorithmicindent} \textbf{if} index $<$ 0 \textbf{or} index $\geq$ count; \textbf{then}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} NULL
+                \State \hspace{\algorithmicindent} \textbf{else}
+                \State \hspace{\algorithmicindent} \hspace{\algorithmicindent} \textbf{return} lines[(head + index) \% size]
+                \State \hspace{\algorithmicindent} \textbf{end if}
+            \end{algorithmic}
         \end{algorithm}
     \end{frame}
 
+    % \begin{frame}
+    %     \frametitle{Děkuji za pozornost!}
+    %     \centering
+    %     \makebox[\textwidth]{
+    %         \begin{tikzpicture}
+    %             \node (screenshot)
+    %             {\includegraphics[width=0.6\paperwidth]{img/template-Screenshot.png}};
+    %             \node (schema) at (screenshot.south east) [xshift=5em] [yshift=2.5ex]
+    %             {\includegraphics[width=0.45\paperwidth]{img/template-Schema.pdf}};
+    %             \node (goal) at (screenshot.north east) [xshift=4em] [yshift=2ex]
+    %             {\includegraphics[width=0.5\paperwidth]{img/template-Goal.pdf}};
+    %         \end{tikzpicture}
+    %     }
+    % \end{frame}
+
     \begin{frame}
-        \frametitle{Děkuji za pozornost!}
+        \frametitle{Zdroje}
         \centering
-        \makebox[\textwidth]{
-            \begin{tikzpicture}
-                \node (screenshot)
-                {\includegraphics[width=0.6\paperwidth]{img/template-Screenshot.png}};
-                \node (schema) at (screenshot.south east) [xshift=5em] [yshift=2.5ex]
-                {\includegraphics[width=0.45\paperwidth]{img/template-Schema.pdf}};
-                \node (goal) at (screenshot.north east) [xshift=4em] [yshift=2ex]
-                {\includegraphics[width=0.5\paperwidth]{img/template-Goal.pdf}};
-            \end{tikzpicture}
-        }
+        \begin{thebibliography}{}
+            \bibitem{cbuf} BURNETT, C. (2007, 24. června). Cyklická fronta. Wikipedie [online].\\\url{https://commons.wikimedia.org/wiki/File:Circular_buffer.svg}
+            \bibitem{lol} ARPACI-DUSSEAU, Remzi H.; ARPACI-DUSSEAU, Andrea C. (2014).\\Operating Systems: Three Easy Pieces. Arpaci-Dusseau Books. \url{http://pages.cs.wisc.edu/~remzi/OSTEP/}
+            \bibitem{pepe} PERINGER, P. Domácí úloha 2. (2024, 26. března).\\ \url{https://www.fit.vutbr.cz/study/courses/IJC/public/DU2.html.cs}
+        \end{thebibliography}
     \end{frame}
+
 \end{document}
