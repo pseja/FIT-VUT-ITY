@@ -1,6 +1,0 @@
-\beamer@slide {fig:circular_buffer}{3}
-\beamer@slide {alg:circularbuffer}{4}
-\beamer@slide {alg:isempty}{5}
-\beamer@slide {alg:isfull}{6}
-\beamer@slide {alg:cbufPut}{7}
-\beamer@slide {alg:cbufGet}{8}

@@ -13,19 +13,25 @@
 % Nastavení informací pro úvodní stránku / Setting information for the title page
 %---------------------------------------------------------------------------
 \projectinfo{
-  date=\today, % Datum - je vhodné vepsat datum obhajoby (natvrdo), ne datum kompilace slajdů / Date - it is advisable to write the date of the defense (hard), not the date of the slide compilation        
-  title={Cyklická fronta}, % Název prezentace / Presentation title (The whole title of the presented work suitably divided into lines that are optically balanced)
-  title.footer={Cyklická fronta}, % Název prezentace - text zobrazovaný vedle čísla slajdu / Presentation title - displayed next to the slide number (The full title of the presented work, it may be suitably abbreviated to fit the footer)
-  author.name={Lukáš},  % Jméno autora / Author name
-  author.surname={Pšeja}, % Příjmení autora / Author surname
-  author.title.first={} % Tituly před jménem autora (jsou-li jaké) / Author's titles before the name (if there are any)
+    date=\today, % Datum - je vhodné vepsat datum obhajoby (natvrdo), ne datum kompilace slajdů / Date - it is advisable to write the date of the defense (hard), not the date of the slide compilation        
+    title={Cyklická fronta}, % Název prezentace / Presentation title (The whole title of the presented work suitably divided into lines that are optically balanced)
+    title.footer={Cyklická fronta}, % Název prezentace - text zobrazovaný vedle čísla slajdu / Presentation title - displayed next to the slide number (The full title of the presented work, it may be suitably abbreviated to fit the footer)
+    author.name={Lukáš},  % Jméno autora / Author name
+    author.surname={Pšeja}, % Příjmení autora / Author surname
+    author.title.first={} % Tituly před jménem autora (jsou-li jaké) / Author's titles before the name (if there are any)
 }
 
 % Struktura prezentace / Presentation structure
 %---------------------------------------------------------------------------
 
 \begin{document}
-    \frame[plain]{\titlepage} % Úvodní stránka / Title page
+    %! UNDERFULL a OVERFULL je bohužel chyba v šabloně, 
+    %! psal jsem mail panu doktorovi Jaroslavu Dytrychovi, 
+    %! který psal, že to je chyba v šabloně a nemám se tím zabývat, 
+    %! takže to prosím neberte jako chybu v mém kódu, děkuji
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
 
     \begin{frame}
         \frametitle{Motivace}
@@ -83,6 +89,9 @@
     \begin{frame}
         \frametitle{Zakladní operace s cyklickým polem 1/4}
         Kontrola prázdnosti cyklického pole
+        \begin{itemize}
+            \item Časová složitost kontroly prázdnosti je $O(1)$
+        \end{itemize}
         \begin{algorithm}[H]
             \caption{isEmpty}
             \label{alg:isempty}
@@ -103,6 +112,9 @@
     \begin{frame}
         \frametitle{Zakladní operace s cyklickým polem 2/4}
         Kontrola plnosti cyklického pole
+        \begin{itemize}
+            \item Časová složitost kontroly plnosti je $O(1)$
+        \end{itemize}
         \begin{algorithm}[H]
             \caption{isFull}
             \label{alg:isfull}
@@ -124,7 +136,7 @@
         \frametitle{Zakladní operace s cyklickým polem 3/4}
         Vložení řádku do cyklického pole
         \begin{itemize}
-            \item Časová složitost operace je $O(1)$
+            \item Časová složitost vložení řádku je $O(1)$
         \end{itemize}
         \begin{algorithm}[H]
             \caption{cbufPut}
@@ -148,7 +160,7 @@
         \frametitle{Zakladní operace s cyklickým polem 4/4}
         Získání řádku z cyklického pole
         \begin{itemize}
-            \item Časová složitost operace je $O(1)$
+            \item Časová složitost získání řádku je $O(1)$
         \end{itemize}
         \begin{algorithm}[H]
             \caption{cbufGet}
@@ -168,20 +180,11 @@
         \end{algorithm}
     \end{frame}
 
-    % \begin{frame}
-    %     \frametitle{Děkuji za pozornost!}
-    %     \centering
-    %     \makebox[\textwidth]{
-    %         \begin{tikzpicture}
-    %             \node (screenshot)
-    %             {\includegraphics[width=0.6\paperwidth]{img/template-Screenshot.png}};
-    %             \node (schema) at (screenshot.south east) [xshift=5em] [yshift=2.5ex]
-    %             {\includegraphics[width=0.45\paperwidth]{img/template-Schema.pdf}};
-    %             \node (goal) at (screenshot.north east) [xshift=4em] [yshift=2ex]
-    %             {\includegraphics[width=0.5\paperwidth]{img/template-Goal.pdf}};
-    %         \end{tikzpicture}
-    %     }
-    % \end{frame}
+    \begin{frame}[s]
+        \vfill
+        \centering \Large Děkuji za pozornost
+        \vfill
+    \end{frame}
 
     \begin{frame}
         \frametitle{Zdroje}

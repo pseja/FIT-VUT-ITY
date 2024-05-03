@@ -12,7 +12,7 @@
 \DeclareOption{english}{\let\ifenglish\iftrue\let\ifczech\iffalse}
 \DeclareOption*{}
 \ProcessOptions\relax
-\LoadClass[10pt,xcolor=pdflatex,hyperref={unicode}]{beamer}
+\LoadClass[10pt,hyperref={unicode}]{beamer}
 
 %-----------------------------------------------------------------------------
 % Balicky / Packages
@@ -44,7 +44,6 @@
 %-----------------------------------------------------------------------------
 % Texty / Texts
 %-----------------------------------------------------------------------------
-\def\@supervisor@CS{Vedoucí: }
 
 %-----------------------------------------------------------------------------
 % Projectinfo - parametrizace sablony / template parameters
