@@ -1,6 +1,4 @@
 # FIT-VUT-ITY
-Repository for ITY (Typography and publishing)
-
 ### Výsledné hodnocení
 #### První projekt - (9.05/10)
 - -0.25:Odkazy na referenční body sázeny 'na tvrdo' nebo nestandardním způsobem (správně: \ref)
