@@ -14,13 +14,13 @@
 #### Třetí projekt - (15/15)
 
 #### Čtvrtý projekt - (11/15)
-- -0.5b - ktere vydani je 1?
-- -0.5b - proc je Ostravska univerzita velkym pismem?
-- -0.5b - 5 nema ISSN
-- -0.5b - 7 nema ISSN
-- -0.5b - kdo je autor u 7?
-- -0.5b - nekonzistentni psani jmen
-- -1b - co je 10?
+- -0.5b:ktere vydani je 1?
+- -0.5b:proc je Ostravska univerzita velkym pismem?
+- -0.5b:5 nema ISSN
+- -0.5b:7 nema ISSN
+- -0.5b:kdo je autor u 7?
+- -0.5b:nekonzistentni psani jmen
+- -1b:co je 10?
 
 #### Pátý projekt - (10.50/15)
 mínus všechny body za to, že byly problémy v šabloně, která byla povolená, takže bych čekal, že se nebudou hodnotit její problémy, ale hodnotily, jinak by byla prezentace za 15/15
